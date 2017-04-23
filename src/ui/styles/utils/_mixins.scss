@@ -1,0 +1,91 @@
+@mixin retina {
+  @media #{map-get($media-query-selectors, retina) } { @content; }
+}
+
+@mixin mobile-small {
+  @media #{map-get($media-query-selectors, mobile-small) } { @content; }
+}
+
+@mixin mobile {
+  @media #{map-get($media-query-selectors, mobile) } { @content; }
+}
+
+@mixin mobile-big {
+  @media #{map-get($media-query-selectors, mobile-big) } { @content; }
+}
+
+@mixin tablet {
+  @media #{map-get($media-query-selectors, tablet) } { @content; }
+}
+
+@mixin tablet-only {
+  @media #{map-get($media-query-selectors, tablet-only) } { @content; }
+}
+
+@mixin desktop {
+  @media #{map-get($media-query-selectors, desktop) } { @content; }
+}
+
+@mixin desktop-only {
+  @media #{map-get($media-query-selectors, desktop-only) } { @content; }
+}
+
+@mixin large {
+  @media #{map-get($media-query-selectors, large) } { @content; }
+}
+
+@mixin large-only {
+  @media #{map-get($media-query-selectors, large-only) } { @content; }
+}
+
+@mixin xlarge {
+  @media #{map-get($media-query-selectors, xlarge) } { @content; }
+}
+
+@mixin ios-bouncy-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin stretch($top: auto, $right: auto, $bottom: auto, $left: auto, $position: absolute) {
+  position: $position;
+  @if $top {
+    top: $top;
+  }
+  @if $bottom {
+    bottom: $bottom;
+  }
+  @if $left {
+    left: $left;
+  }
+  @if $right {
+    right: $right;
+  }
+}
+
+@mixin touch-state {
+  &.is-touch-active {
+    @content;
+  }
+}
+
+@mixin click-state {
+  &:active {
+    @content;
+  }
+}
+
+@mixin hover-state {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin touch-click-state {
+  @include touch-state { @content; }
+  @include click-state { @content; }
+}
+
+@mixin touch-hover-state {
+  @include touch-state { @content; }
+  @include hover-state { @content; }
+}

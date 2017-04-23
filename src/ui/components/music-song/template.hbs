@@ -1,0 +1,6 @@
+<div class="song{{if @isActive ' is-active'}}">
+  {{@song.title}}
+  {{#if featsString}}
+    (feat: {{featsString}})
+  {{/if}}
+</div>

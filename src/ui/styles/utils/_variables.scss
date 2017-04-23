@@ -1,0 +1,31 @@
+$bg: #888;
+
+$theme-color-map: (
+  1: #FF6F10,
+  2: #DA075E,
+  3: #EE10D7,
+  4: #FD387A,
+  5: #2DDDBF
+);
+
+$theme-color-strong-map: (
+  1: lighten(map-get($theme-color-map, 1), 15%),
+  2: lighten(map-get($theme-color-map, 2), 15%),
+  3: lighten(map-get($theme-color-map, 3), 20%),
+  4: lighten(map-get($theme-color-map, 4), 10%),
+  5: lighten(map-get($theme-color-map, 5), 30%)
+);
+
+$media-query-selectors: (
+  retina: 'only screen and (min-resolution: 2dppx)',
+  mobile-small: '(max-width: 550px)',
+  mobile: '(max-width: 767px)',
+  mobile-big: '(min-width: 551px) and (max-width: 767px)',
+  tablet: '(min-width: 768px)',
+  tablet-only: '(min-width: 768px) and (max-width: 991px)',
+  desktop: '(min-width: 992px)',
+  desktop-only: '(min-width: 992px) and (max-width: 1199px)',
+  large: '(min-width: 1200px)',
+  large-only: '(min-width: 1200px) and (max-width: 1449px)',
+  xlarge: '(min-width: 1450px)'
+);

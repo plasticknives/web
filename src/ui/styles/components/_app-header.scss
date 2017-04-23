@@ -1,0 +1,40 @@
+.header {
+  background: {
+    repeat: no-repeat;
+    position: 50%;
+    size: 650px;
+  }
+
+  @include mobile {
+    background-size: contain;
+    margin: auto;
+  }
+
+  @include mobile-small {
+    height: 100px;
+    width: 300px;
+  }
+
+  @include mobile-big {
+    height: 150px;
+    width: 500px;
+  }
+
+  @include tablet {
+    flex: 1;
+  }
+
+  @include tablet-only {
+    background-size: 600px;
+  }
+
+  @include desktop {
+    background-position: 50% 60%;
+  }
+
+  @for $i from 1 through 5 {
+    [data-theme-color="#{$i}"] & {
+      background-image: url(../images/headers/#{$i}.svg);
+    }
+  }
+}

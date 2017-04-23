@@ -2,7 +2,7 @@ import App from './main';
 import { ComponentManager, setPropertyDidChange } from '@glimmer/component';
 
 const app = new App();
-const containerElement = document.getElementById('app');
+const containerElement = document.getElementsByTagName('body')[0];
 
 setPropertyDidChange(() => {
   app.scheduleRerender();
@@ -14,6 +14,6 @@ app.registerInitializer({
   }
 });
 
-app.renderComponent('plastic-knives-glimmer', containerElement, null);
+app.renderComponent('plastic-knives', containerElement, null);
 
 app.boot();

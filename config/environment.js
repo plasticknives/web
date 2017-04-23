@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'plastic-knives-glimmer',
+    modulePrefix: 'plastic-knives',
     environment: environment
   };
 

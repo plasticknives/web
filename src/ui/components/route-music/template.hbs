@@ -1,0 +1,33 @@
+<div class="route-music"
+  data-opened-album-index="{{openedAlbumIndex}}"
+  data-theme-color="{{themeColorIndex}}"
+  data-album-count="{{albums.length}}"
+>
+  <app-header />
+
+  <section class="__content">
+    <music-player
+      @activeSong={{activeSong}}
+      @playNext={{action setNextAlbumSongActive}}
+      @playPrevious={{action setPreviousAlbumSongActive}}
+      @updatePlayProgressPercentage={{action updatePlayProgressPercentage}}
+    />
+
+    <div class="__albums-wrapper js-albums-wrapper" style="{{albumsWrapperElStyle}}">
+      <div class="__albums js-albums" style="{{albumsElStyle}}">
+        {{#each albums key='@index' as |album idx|}}
+          <music-album
+            @album={{album}}
+            @index={{idx}}
+            @activeAlbum={{activeAlbum}}
+            @activeSong={{activeSong}}
+            @toggleOpened={{action toggleAlbumOpened}}
+            @playProgressPercentage={{playProgressPercentage}}
+          />
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <app-footer/>
+</div>

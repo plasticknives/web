@@ -1,0 +1,81 @@
+.player {
+  @include stretch(0, 0, auto, 0);
+  height: 0px;
+  transition: all 500ms;
+  overflow: hidden;
+  opacity: 0;
+
+  @for $i from 1 through 5 {
+    [data-theme-color="#{$i}"] & {
+      .__circle {
+        border-color: map-get($theme-color-map, $i);
+
+        &:hover {
+          border-color: map-get($theme-color-strong-map, $i);
+        }
+      }
+
+      .__control {
+        background-color: map-get($theme-color-map, $i);
+      }
+    }
+  }
+
+  &.is-active {
+    height: 58px;
+    opacity: 1;
+    top: -44px;
+    z-index: 1;
+  }
+
+  .__controls-container {
+    width: 200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+  }
+
+  .__main-control-wrapper {
+    width: 100px;
+    height: 50px;
+    float: left;
+  }
+
+  .__circle {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    border-radius: 100%;
+    cursor: pointer;
+    border: 1px solid #444;
+    transition: border-color 250ms;
+  }
+
+  .__control {
+    width: 24px;
+    height: 24px;
+    margin: 12px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    transition: background-color 200ms;
+  }
+
+  .__control--previous {
+    background-image: url(../images/icons/previous.png);
+  }
+
+  .__control--next {
+    background-image: url(../images/icons/next.png);
+  }
+
+  .__control--play {
+    background-image: url(../images/icons/play.png);
+  }
+
+  .__control--pause {
+    background-image: url(../images/icons/pause.png);
+  }
+}

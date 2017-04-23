@@ -1,0 +1,19 @@
+<div class="player{{if @activeSong ' is-active'}}">
+  <audio
+    class="js-music-player-audio"
+    src="{{@activeSong.fileName}}"
+    onpause={{action onAudioPause}}
+    onplaying={{action onAudioPlaying}}
+    ontimeupdate={{action onAudioTimeUpdate}}
+  />
+
+  <div class="__controls-container">
+    <button type="button" class="__control __control--previous" onclick={{action @playPrevious}}></button>
+    <div class="__main-control-wrapper">
+      <button type="button" class="__circle" onclick={{action togglePlayPause}}>
+        <div class="__control {{if isPlaying '__control--pause' '__control--play'}}"></div>
+      </button>
+    </div>
+    <button class="__control __control--next" onclick={{action @playNext}}></button>
+  </div>
+</div>

@@ -1,3 +1,14 @@
-h1 {
-  color: #444;
-}
+$source-sans-pro: 'Source Sans Pro';
+$font: 'Source Sans Pro';
+
+@import 'utils/variables';
+@import 'utils/mixins';
+
+@import 'utils/core';
+
+@import 'components/app-footer';
+@import 'components/app-header';
+@import 'components/music-album';
+@import 'components/music-player';
+@import 'components/music-song';
+@import 'components/route-music';

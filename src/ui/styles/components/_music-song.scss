@@ -1,0 +1,62 @@
+.song {
+  font-size: 16px;
+  font-weight: 400;
+  color: #999;
+  line-height: 20px;
+  padding: 5px 40px;
+  cursor: pointer;
+  transition: all 200ms;
+  position: relative;
+  background: {
+    repeat: no-repeat;
+    position: 10px 50%;
+    size: auto 16px;
+    clip: border-box;
+  }
+
+  // @media (max-height: 650px) { line-height: 22px; }
+  // @media (max-width: 380px) { padding: 3px 40px; }
+  // @media (max-height: 640px) { padding: 3px 40px; }
+  // @media (max-width: 380px) { padding: 6px 40px;  margin: 0; }
+  // @media (max-height: 650px) { padding: 6px 40px;  margin: 0; }
+
+  @for $i from 1 through 5 {
+    [data-theme-color="#{$i}"] & {
+      &.is-active {
+        color: map-get($theme-color-map, $i);
+
+        &::before,
+        &::after {
+          background-color: map-get($theme-color-map, $i);
+        }
+      }
+    }
+  }
+
+  &:hover {
+    color: #EEE;
+  }
+
+  &.is-active {
+    font-weight: bold;
+    padding: 10px 40px;
+    margin: 5px 0;
+    opacity: 0.8;
+
+    &::before,
+    &::after {
+      @include stretch(auto, 0, auto, 0);
+      content: '';
+      height: 1px;
+      background-image: url(../images/line.svg);
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+}
