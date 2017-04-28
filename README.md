@@ -1,9 +1,5 @@
-https://simpleicons.org/
-
-# plastic-knives
-
-This README outlines the details of collaborating on this Glimmer application.
-A short introduction of this app could easily go here.
+# Plastic Knives band website
+[plasticknives.band](http://www.plasticknives.band/)
 
 ## Prerequisites
 
