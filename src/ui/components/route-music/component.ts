@@ -120,6 +120,10 @@ export default class RouteMusic extends Component {
 
   updatePlayProgressPercentage(val: number) {
     this.playProgressPercentage = val;
+
+    if (this.playProgressPercentage >= 100) {
+      this.setNextAlbumSongActive();
+    }
   }
 
   playSong(song: Song) {
