@@ -26,12 +26,12 @@ const albumsJSON = [{
     feat: [],
     duration: 30
   }, {
-    title: 'Body Language',
+    title: 'Dying Kings',
     fileName: 'songs/body-language/05-body-language.mp3',
     feat: [],
     duration: 30
   }, {
-    title: 'Dying Kings',
+    title: 'Body Language',
     fileName: 'songs/body-language/06-dying-kings.mp3',
     feat: [],
     duration: 30
