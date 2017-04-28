@@ -10,6 +10,8 @@ export default class MusicAlbum extends Component {
     toggleOpened: (Album) => void;
     activeSong: Song;
     playProgressPercentage: number;
+    isOpening: number;
+    playSong: (Song) => void;
   };
 
   @tracked('args') get albumIndex() : number {
@@ -23,9 +25,5 @@ export default class MusicAlbum extends Component {
   @tracked('args') get styleAttributeValue() : string {
     const percentage = this.args.playProgressPercentage;
     return this.isOpened && percentage ? `width: ${percentage}%` : '';
-  }
-
-  @tracked('args') get albumImageSrc() : string {
-    return this.args.album.title.toLowerCase().split(' ').join('-');
   }
 };

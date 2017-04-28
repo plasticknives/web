@@ -2,6 +2,10 @@
   @media #{map-get($media-query-selectors, retina) } { @content; }
 }
 
+@mixin mobile-tiny {
+  @media #{map-get($media-query-selectors, mobile-tiny) } { @content; }
+}
+
 @mixin mobile-small {
   @media #{map-get($media-query-selectors, mobile-small) } { @content; }
 }

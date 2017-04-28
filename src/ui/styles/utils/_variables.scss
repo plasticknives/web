@@ -1,4 +1,5 @@
 $bg: #888;
+$color-bg-dark: #151515;
 
 $theme-color-map: (
   1: #FF6F10,
@@ -18,6 +19,7 @@ $theme-color-strong-map: (
 
 $media-query-selectors: (
   retina: 'only screen and (min-resolution: 2dppx)',
+  mobile-tiny: '(max-width: 340px)',
   mobile-small: '(max-width: 550px)',
   mobile: '(max-width: 767px)',
   mobile-big: '(min-width: 551px) and (max-width: 767px)',

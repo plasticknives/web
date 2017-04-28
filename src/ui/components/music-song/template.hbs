@@ -1,4 +1,4 @@
-<div class="song{{if @isActive ' is-active'}}">
+<div class="song{{if @isActive ' is-active'}}" onclick={{action @play}}>
   {{@song.title}}
   {{#if featsString}}
     (feat: {{featsString}})

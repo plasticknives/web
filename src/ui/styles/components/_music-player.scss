@@ -5,6 +5,13 @@
   overflow: hidden;
   opacity: 0;
 
+  @include mobile {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    background-color: $color-bg-dark;
+  }
+
   @for $i from 1 through 5 {
     [data-theme-color="#{$i}"] & {
       .__circle {
@@ -24,8 +31,17 @@
   &.is-active {
     height: 58px;
     opacity: 1;
-    top: -44px;
     z-index: 1;
+
+    @include tablet {
+      top: -44px;
+    }
+
+    @include mobile {
+      height: 78px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
 
   .__controls-container {
@@ -50,6 +66,7 @@
     cursor: pointer;
     border: 1px solid #444;
     transition: border-color 250ms;
+    background-color: $color-bg-dark;
   }
 
   .__control {

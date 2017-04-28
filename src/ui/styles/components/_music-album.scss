@@ -1,46 +1,26 @@
 .album {
   width: 400px;
   height: 400px;
-  background-color: #1B1B1B;
+  background-color: $color-bg-dark;
   box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);
   transition: transform 1s, opacity 500ms, height 1s, margin 1s, width 1s;
   position: relative;
   transform-style: preserve-3d;
-  opacity: 0.6;
   will-change: transform;
 
-  // @media (max-height: 650px) {
-  //   width: 300px;
-  //   height: 300px;
-  //   margin-top: 10px;
-  // }
-  //
-  // @media (max-width: 500px) {
-  //   width: 340px;
-  //   height: 340px;
-  //   margin: 0 auto 50px auto;
-  //   float: none;
-  //   box-shadow: none;
-  // }
+  @include tablet {
+    opacity: 0.6;
+  }
 
-  // @media (max-width: 380px) {
-  //   width: 240px;
-  //   height: 240px;
-  // }
-  //
-  // @media (min-width: 891px) {
-  //   margin-top: 20px;
-  // }
+  @include mobile-small {
+    width: 340px;
+    height: 340px;
+  }
 
-  // &:last-child {
-  //   @media (min-width: 891px) {
-  //     margin-right: 0;
-  //   }
-  //
-  //   @media (max-width: 890px) {
-  //     margin-bottom: 50px;
-  //   }
-  // }
+  @include mobile-tiny {
+    width: 300px;
+    height: 300px;
+  }
 
   &:not(.is-opened) {
     &:hover {
@@ -50,6 +30,13 @@
 
   &.is-opened {
     opacity: 1;
+
+    .__front {
+      pointer-events: none;
+    }
+  }
+
+  &.is-opened:not(.is-closing) {
     transform: rotateY(-180deg);
   }
 
@@ -84,19 +71,17 @@
     transition: color 250ms;
     will-change: color;
     color: $bg;
-
-    // @media (max-width: 380px) {
-    //   bottom: 5px;
-    //   font-size: 18px;
-    // }
   }
 
   .__song-list {
-    padding: 20px;
-    margin-top: 20px;
-    // @media (max-width: 500px) { margin-top: 10px; }
-    // @media (max-width: 380px) { margin-top: 0; padding: 10px; }
-    // @media (max-height: 640px) { margin-top: 0; padding: 10px; }
+    @include tablet {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    @include mobile {
+      padding: 10px;
+    }
   }
 
   .__progress {
@@ -137,26 +122,19 @@
   }
 
   .__close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
+    @include stretch(0, 0, auto, auto);
+    width: 40px;
+    height: 40px;
     z-index: 1;
     padding: 5px;
     border-radius: 3px;
+    cursor: pointer;
     background: {
       color: #1B1B1B;
       image: url(../images/icons/close.png);
       repeat: no-repeat;
       size: 14px;
       position: 50%;
-    }
-
-    @include mobile {
-      top: 5px;
-      right: 5px;
     }
   }
 }

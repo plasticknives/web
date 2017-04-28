@@ -23,6 +23,9 @@
             @activeSong={{activeSong}}
             @toggleOpened={{action toggleAlbumOpened}}
             @playProgressPercentage={{playProgressPercentage}}
+            @isOpening={{and (eq activeAlbum album) isAlbumOpening}}
+            @isClosing={{and (eq activeAlbum album) isAlbumClosing}}
+            @playSong={{action playSong}}
           />
         {{/each}}
       </div>

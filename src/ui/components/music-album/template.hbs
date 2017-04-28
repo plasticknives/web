@@ -1,9 +1,9 @@
-<div class="album album-{{albumIndex}}{{if isOpened ' is-opened'}}">
+<div class="album album-{{albumIndex}}{{if isOpened ' is-opened'}}{{if @isOpening ' is-opening'}}{{if @isClosing ' is-closing'}}">
   <div class="__progress">
     <div class="__progress-indicator" style={{styleAttributeValue}}></div>
   </div>
 
-  <div class="__front" role="button" onclick={{action @toggleOpened @album}} style="background-image: url(images/albums/{{albumImageSrc}}.png)"></div>
+  <div class="__front" role="button" onclick={{action @toggleOpened @album}} style="background-image: url('{{@album.coverUrl}}')"></div>
 
   <div class="__back">
     <button type="button" class="__close-button" onclick={{action @toggleOpened @album}}></button>
@@ -13,6 +13,7 @@
         <music-song
           @song={{song}}
           @isActive={{eq song @activeSong}}
+          @play={{action @playSong song}}
         />
       {{/each}}
     </div>

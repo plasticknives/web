@@ -4,6 +4,7 @@ import Album from '../../../utils/Album';
 import Song from '../../../utils/Song';
 
 const THEME_COLOR_COUNT = 5;
+const MOBILE_WIDTH_BREAKPOINT = 768;
 
 export default class RouteMusic extends Component {
   element: HTMLElement;
@@ -15,6 +16,13 @@ export default class RouteMusic extends Component {
   @tracked activeAlbum: Album|null;
   @tracked activeSong: Song|null;
   @tracked playProgressPercentage: number = 0;
+  @tracked windowWidth: number = window.innerWidth;
+  @tracked isAlbumOpening: boolean = false;
+  @tracked isAlbumClosing: boolean = false;
+
+  @tracked('windowWidth') get isMobile() : boolean {
+    return this.windowWidth <= MOBILE_WIDTH_BREAKPOINT;
+  }
 
   @tracked('activeAlbum') get openedAlbumIndex() : number|undefined {
     if (this.activeAlbum) {
@@ -22,18 +30,18 @@ export default class RouteMusic extends Component {
     }
   }
 
-  @tracked('albumsContainerWidth', 'albumsWidth') get albumsWrapperElStyle() : string {
+  @tracked('albumsContainerWidth', 'albumsWidth', 'isMobile') get albumsWrapperElStyle() : string {
     const leftOffset = (this.albumsContainerWidth - this.albumsWidth) / 2;
-    return `transform: translateX(${leftOffset}px)`;
+    return this.isMobile || leftOffset > 0 ? '' : `transform: translateX(${leftOffset}px)`;
   }
 
-  @tracked('activeAlbum') get albumsElStyle() : string {
-    if (this.activeAlbum) {
+  @tracked('activeAlbum', 'isMobile') get albumsElStyle() : string {
+    if (this.activeAlbum && !this.isMobile) {
       const idx = albums.indexOf(this.activeAlbum);
       const albumEl = this.element.querySelectorAll('.album')[idx];
 
       if (albumEl) {
-        const bodyCenter = document.body.clientWidth / 2;
+        const bodyCenter = window.innerWidth / 2;
         const albumElCenter= albumEl.getBoundingClientRect().left + (albumEl.clientWidth / 2);
         const leftOffset = bodyCenter - albumElCenter;
         return `transform: translateX(${leftOffset}px)`;
@@ -48,6 +56,7 @@ export default class RouteMusic extends Component {
   }
 
   updateLayout() {
+    this.windowWidth = window.innerWidth;
     const albumsWrapperEl = this.element.querySelector('.js-albums-wrapper');
     if (albumsWrapperEl) {
       this.albumsContainerWidth = albumsWrapperEl.clientWidth;
@@ -63,13 +72,26 @@ export default class RouteMusic extends Component {
   }
 
   toggleAlbumOpened(album: Album) {
-    this.activeAlbum = this.activeAlbum === album ? null : album;
-
-    if (this.activeAlbum) {
-      this.activeSong = this.activeAlbum.songs[0];
-    } else {
+    if (this.activeAlbum === album) {
+      this.isAlbumClosing = true;
       this.activeSong = null;
+    } else {
+      this.activeAlbum = album;
+      this.isAlbumOpening = true;
     }
+
+    setTimeout(() => {
+      if (this.isAlbumClosing) {
+        this.activeAlbum = null;
+      }
+
+      if (this.isAlbumOpening && this.activeAlbum) {
+        this.activeSong = this.activeAlbum.songs[0];
+      }
+
+      this.isAlbumOpening = false;
+      this.isAlbumClosing = false;
+    }, 1000);
   }
 
   setNextAlbumSongActive() {
@@ -90,5 +112,12 @@ export default class RouteMusic extends Component {
 
   updatePlayProgressPercentage(val: number) {
     this.playProgressPercentage = val;
+  }
+
+  playSong(song: Song) {
+    if (this.activeAlbum && this.activeAlbum.songs.indexOf(song) >= 0) {
+      this.activeSong = song;
+      this.nextThemeColorIndex();
+    }
   }
 };
