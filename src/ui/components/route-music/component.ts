@@ -24,6 +24,13 @@ export default class RouteMusic extends Component {
     return this.windowWidth <= MOBILE_WIDTH_BREAKPOINT;
   }
 
+  @tracked ('isMobile') get orderedAlbums() : Album[] {
+    if (this.isMobile) {
+      return this.albums;
+    }
+    return [this.albums[1], this.albums[0], this.albums[2]];
+  }
+
   @tracked('activeAlbum') get openedAlbumIndex() : number|undefined {
     if (this.activeAlbum) {
       return albums.indexOf(this.activeAlbum) + 1 || undefined;
@@ -35,9 +42,9 @@ export default class RouteMusic extends Component {
     return this.isMobile || leftOffset > 0 ? '' : `transform: translateX(${leftOffset}px)`;
   }
 
-  @tracked('activeAlbum', 'isMobile') get albumsElStyle() : string {
+  @tracked('activeAlbum', 'isMobile', 'orderedAlbums') get albumsElStyle() : string {
     if (this.activeAlbum && !this.isMobile) {
-      const idx = albums.indexOf(this.activeAlbum);
+      const idx = this.orderedAlbums.indexOf(this.activeAlbum);
       const albumEl = this.element.querySelectorAll('.album')[idx];
 
       if (albumEl) {
@@ -75,6 +82,7 @@ export default class RouteMusic extends Component {
     if (this.activeAlbum === album) {
       this.isAlbumClosing = true;
       this.activeSong = null;
+      this.playProgressPercentage = 0;
     } else {
       this.activeAlbum = album;
       this.isAlbumOpening = true;

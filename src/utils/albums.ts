@@ -2,6 +2,41 @@ import Album from './album';
 import Song from './song';
 
 const albumsJSON = [{
+  title: 'Body Language',
+  coverUrl: 'images/albums/body-language.jpg',
+  link: 'https://plasticknives.bandcamp.com/album/body-language',
+  songs: [{
+    title: 'Goldrush',
+    fileName: 'songs/body-language/01-goldrush.mp3',
+    feat: [],
+    duration: 30
+  }, {
+    title: 'Gonna Throw Myself Around',
+    fileName: 'songs/body-language/02-gonna-throw-myself-around.mp3',
+    feat: [],
+    duration: 30
+  }, {
+    title: 'Secret Lvl',
+    fileName: 'songs/body-language/03-secret-lvl.mp3',
+    feat: [],
+    duration: 30
+  }, {
+    title: 'Ballgagger',
+    fileName: 'songs/body-language/04-ballgagger.mp3',
+    feat: [],
+    duration: 30
+  }, {
+    title: 'Body Language',
+    fileName: 'songs/body-language/05-body-language.mp3',
+    feat: [],
+    duration: 30
+  }, {
+    title: 'Dying Kings',
+    fileName: 'songs/body-language/06-dying-kings.mp3',
+    feat: [],
+    duration: 30
+  }]
+}, {
   title: 'Both Sides Of The Atlantic',
   coverUrl: 'images/albums/both-sides-of-the-atlantic.png',
   link: 'https://plasticknives.bandcamp.com/album/both-sides-of-the-atlantic',
@@ -38,41 +73,6 @@ const albumsJSON = [{
   }, {
     title: 'Both Sides Of The Atlantic',
     fileName: 'songs/both-sides-of-the-atlantic/07-both-sides-of-the-atlantic.mp3',
-    feat: [],
-    duration: 30
-  }]
-}, {
-  title: 'Body Language',
-  coverUrl: 'images/albums/body-language.jpg',
-  link: 'https://plasticknives.bandcamp.com/album/body-language',
-  songs: [{
-    title: 'Goldrush',
-    fileName: 'songs/body-language/01-goldrush.mp3',
-    feat: [],
-    duration: 30
-  }, {
-    title: 'Gonna Throw Myself Around',
-    fileName: 'songs/body-language/02-gonna-throw-myself-around.mp3',
-    feat: ['Diyala'],
-    duration: 30
-  }, {
-    title: 'Secret Lvl',
-    fileName: 'songs/body-language/03-secret-lvl.mp3',
-    feat: [],
-    duration: 30
-  }, {
-    title: 'Ballgagger',
-    fileName: 'songs/body-language/04-ballgagger.mp3',
-    feat: [],
-    duration: 30
-  }, {
-    title: 'Body Language',
-    fileName: 'songs/body-language/05-body-language.mp3',
-    feat: ['Sara Renar'],
-    duration: 30
-  }, {
-    title: 'Dying Kings',
-    fileName: 'songs/body-language/06-dying-kings.mp3',
     feat: [],
     duration: 30
   }]

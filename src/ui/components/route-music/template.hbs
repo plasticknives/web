@@ -15,14 +15,14 @@
 
     <div class="__albums-wrapper js-albums-wrapper" style="{{albumsWrapperElStyle}}">
       <div class="__albums js-albums" style="{{albumsElStyle}}">
-        {{#each albums key='@index' as |album idx|}}
+        {{#each orderedAlbums key='@index' as |album idx|}}
           <music-album
             @album={{album}}
             @index={{idx}}
             @activeAlbum={{activeAlbum}}
             @activeSong={{activeSong}}
             @toggleOpened={{action toggleAlbumOpened}}
-            @playProgressPercentage={{playProgressPercentage}}
+            @playProgressPercentage={{if (eq activeAlbum album) playProgressPercentage}}
             @isOpening={{and (eq activeAlbum album) isAlbumOpening}}
             @isClosing={{and (eq activeAlbum album) isAlbumClosing}}
             @playSong={{action playSong}}

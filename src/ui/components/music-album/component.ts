@@ -22,6 +22,10 @@ export default class MusicAlbum extends Component {
     return this.args.album === this.args.activeAlbum;
   }
 
+  @tracked('args') get isOtherOpened() : boolean {
+    return !!this.args.activeAlbum && this.args.album !== this.args.activeAlbum;
+  }
+
   @tracked('args') get styleAttributeValue() : string {
     const percentage = this.args.playProgressPercentage;
     return this.isOpened && percentage ? `width: ${percentage}%` : '';

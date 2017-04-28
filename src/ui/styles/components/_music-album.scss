@@ -3,7 +3,7 @@
   height: 400px;
   background-color: $color-bg-dark;
   box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);
-  transition: transform 1s, opacity 500ms, height 1s, margin 1s, width 1s;
+  transition: transform 1s, opacity 500ms;
   position: relative;
   transform-style: preserve-3d;
   will-change: transform;
@@ -30,7 +30,10 @@
 
   &.is-opened {
     opacity: 1;
+  }
 
+  &.is-other-opened,
+  &.is-opened {
     .__front {
       pointer-events: none;
     }
